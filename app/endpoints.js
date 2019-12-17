@@ -34,16 +34,16 @@ exports.types = {
             '-b:a 128k',
         ],
     },
-    mono-wav: {
-	extension: 'wav',
-	outputOptions: [
-	    '-ac 1',
+    monowav: {
+        extension: 'wav',
+        outputOptions: [
+            '-ac 1',
             '-codec pcm_s16le',
             '-ar 22050',
-	]
+        ]
     },
     wav: {
-	extension: 'wav',
+        extension: 'wav',
     },
 
 };
