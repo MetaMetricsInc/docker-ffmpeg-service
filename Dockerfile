@@ -18,35 +18,14 @@ MAINTAINER Paul Visco <paul.visco@gmail.com>
 #####################################################################
 
 # Add the following two dependencies for nodejs
-RUN yum install -y git
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN yum install -y nodejs npm --enablerepo=epel
-
-WORKDIR /usr/local/src
+RUN yum install -y git https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum clean all
+RUN yum install -y nodejs npm --enablerepo=epel && yum clean all
 
 # Custom Builds go here
 RUN npm install -g fluent-ffmpeg
 
-# Remove all tmpfile and cleanup
-# =================================
-WORKDIR /usr/local/
-RUN rm -rf /usr/local/src
-RUN yum clean all
-RUN rm -rf /var/cache/yum
-
-# =================================
-
-# Setup a working directory to allow for
-# docker run --rm -ti -v ${PWD}:/work ...
-# =======================================
-WORKDIR /work
-
-# Make sure Node.js is installed
-RUN           node -v
-RUN           npm -v
-
 #Create app dir
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/uploads
 WORKDIR /usr/src/app
 
 #Install Dependencies
