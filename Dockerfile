@@ -18,7 +18,7 @@ MAINTAINER Paul Visco <paul.visco@gmail.com>
 #####################################################################
 
 # Add the following two dependencies for nodejs
-RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash - && yum install -y nodejs && yum update -y && yum clean all
+RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash - && yum install -y git nodejs && yum update -y && yum clean all
 
 # Custom Builds go here
 RUN npm install -g fluent-ffmpeg
@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 
 #Install Dependencies
 COPY package.json /usr/src/app
-RUN npm install
+RUN npm install --verbose
 
 #Bundle app source
 COPY . /usr/src/app
