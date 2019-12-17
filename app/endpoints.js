@@ -34,7 +34,7 @@ exports.types = {
             '-b:a 128k',
         ],
     },
-    monowav: {
+    wavMono: {
         extension: 'wav',
         outputOptions: [
             '-ac 1',

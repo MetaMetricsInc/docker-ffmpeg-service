@@ -1,4 +1,4 @@
-FROM jrottenberg/ffmpeg:centos
+FROM jrottenberg/ffmpeg:4.2-centos
 
 MAINTAINER Paul Visco <paul.visco@gmail.com>
 
@@ -11,15 +11,14 @@ MAINTAINER Paul Visco <paul.visco@gmail.com>
 #     - NodeJS
 #     - fluent-ffmpeg
 #
-#   For more on Fluent-FFMPEG, see 
+#   For more on Fluent-FFMPEG, see
 #
 #            https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
 #
 #####################################################################
 
 # Add the following two dependencies for nodejs
-RUN yum install -y git https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && yum clean all
-RUN yum install -y nodejs npm --enablerepo=epel && yum clean all
+RUN curl -sL https://rpm.nodesource.com/setup_11.x | bash - && yum install -y nodejs && yum update -y && yum clean all
 
 # Custom Builds go here
 RUN npm install -g fluent-ffmpeg
